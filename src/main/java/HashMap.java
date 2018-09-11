@@ -9,4 +9,8 @@ public class HashMap<K, V> {
         this.elements = new LinkedList[bucketSize];
     }
 
+    private int getHash(K key) {
+        int hash = key.hashCode() % (this.bucketSize - 1);
+        return hash;
+    }
 }
