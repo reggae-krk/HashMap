@@ -62,6 +62,11 @@ public class HashMap<K, V> {
 
         LinkedList<KeyValue> list = this.elements[position];
 
+        if (key == null) {
+            this.elements[0] = null;
+            return;
+        }
+
         for (KeyValue kv : list) {
             if(kv.key.equals(key)) {
                 list.remove(kv);
