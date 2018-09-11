@@ -59,4 +59,14 @@ class HashMapTest {
 
         assertEquals(1, valueFromNull);
     }
+
+    @Test
+    void testRemoveNullKey() {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        hashMap.add(null, 0);
+
+        hashMap.remove(null);
+
+        assertThrows(NullPointerException.class, () -> hashMap.getValue(null));
+    }
 }
