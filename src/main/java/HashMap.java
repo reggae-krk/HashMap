@@ -27,6 +27,7 @@ public class HashMap<K, V> {
             this.elements[position] = list;
             list.add(keyValue);
         }
+        else if (list != null && key == null) this.elements[0].get(0).value = value;
         else {
             for (KeyValue kv : list) {
                 if(kv.key.equals(key)) throw new IllegalArgumentException("This key already exists in HashMap");
