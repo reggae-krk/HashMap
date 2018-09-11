@@ -44,9 +44,11 @@ public class HashMap<K, V> {
         LinkedList<KeyValue> list = this.elements[position];
 
         for (KeyValue kv : list) {
-            if(kv.key.equals(key)) value = kv.value;
-            else throw new IllegalArgumentException("There is no such key in HashMap");
+            if(kv.key.equals(key)) {
+                value = kv.value;
+                return (V) value;
+            }
         }
-        return (V) value;
+        throw new IllegalArgumentException("There is no such key in HashMap");
     }
 }
