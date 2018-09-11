@@ -48,4 +48,15 @@ class HashMapTest {
 
         assertEquals(0, valueFromNull);
     }
+
+    @Test
+    void testAddFewNullKeys() {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        hashMap.add(null, 0);
+        hashMap.add(null, 1);
+
+        int valueFromNull = hashMap.getValue(null);
+
+        assertEquals(1, valueFromNull);
+    }
 }
