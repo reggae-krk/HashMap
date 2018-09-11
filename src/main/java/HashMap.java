@@ -10,7 +10,7 @@ public class HashMap<K, V> {
     }
 
     private int getHash(K key) {
-        int hash = key.hashCode() % (this.bucketSize - 1);
+        int hash = Math.abs(key.hashCode() % (this.bucketSize - 1));
         return hash;
     }
 
