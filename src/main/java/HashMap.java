@@ -44,6 +44,8 @@ public class HashMap<K, V> {
 
         LinkedList<KeyValue> list = this.elements[position];
 
+        if (key == null) return (V) this.elements[0].get(0).value;
+
         for (KeyValue kv : list) {
             if(kv.key.equals(key)) {
                 value = kv.value;
