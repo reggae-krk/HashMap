@@ -15,4 +15,15 @@ class HashMapTest {
         assertEquals(1, firstNumber);
         assertEquals(2, secondNumber);
     }
+
+    @Test
+    void testRemove() {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        hashMap.add("first", 1);
+        hashMap.add("second", 2);
+
+        hashMap.remove("first");
+
+        assertThrows(IllegalArgumentException.class, () -> hashMap.getValue("first"));
+    }
 }
