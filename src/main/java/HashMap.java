@@ -51,4 +51,20 @@ public class HashMap<K, V> {
         }
         throw new IllegalArgumentException("There is no such key in HashMap");
     }
+
+    public void remove(K key) {
+        int position;
+        if (key == null) position = 0;
+        else position = getHash(key);
+
+        LinkedList<KeyValue> list = this.elements[position];
+
+        for (KeyValue kv : list) {
+            if(kv.key.equals(key)) {
+                list.remove(kv);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("There is no such key in HashMap");
+    }
 }
