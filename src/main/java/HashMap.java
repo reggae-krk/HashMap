@@ -13,4 +13,25 @@ public class HashMap<K, V> {
         int hash = key.hashCode() % (this.bucketSize - 1);
         return hash;
     }
+
+    public void add(K key, V value) {
+        int position;
+        if (key == null) position = 0;
+        else position = getHash(key);
+
+        LinkedList<KeyValue> list = this.elements[position];
+        KeyValue<K, V> keyValue = new KeyValue<>(key, value);
+
+        if(list == null) {
+            list = new LinkedList();
+            this.elements[position] = list;
+            list.add(keyValue);
+        }
+        else {
+            for (KeyValue kv : list) {
+                if(kv.key.equals(key)) throw new IllegalArgumentException("This key already exists in HashMap");
+                else list.add(keyValue);
+            }
+        }
+    }
 }
