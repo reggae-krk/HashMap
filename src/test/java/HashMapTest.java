@@ -26,4 +26,16 @@ class HashMapTest {
 
         assertThrows(IllegalArgumentException.class, () -> hashMap.getValue("first"));
     }
+
+    @Test
+    void testClearAll() {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        hashMap.add("first", 1);
+        hashMap.add("second", 2);
+
+        hashMap.clearAll();
+
+        assertThrows(NullPointerException.class, () -> hashMap.getValue("first"));
+        assertThrows(NullPointerException.class, () -> hashMap.getValue("second"));
+    }
 }
