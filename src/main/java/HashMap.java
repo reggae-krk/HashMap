@@ -30,8 +30,8 @@ public class HashMap<K, V> {
         else {
             for (KeyValue kv : list) {
                 if(kv.key.equals(key)) throw new IllegalArgumentException("This key already exists in HashMap");
-                else list.add(keyValue);
             }
+            list.add(keyValue);
         }
     }
 
