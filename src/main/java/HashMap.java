@@ -67,4 +67,10 @@ public class HashMap<K, V> {
         }
         throw new IllegalArgumentException("There is no such key in HashMap");
     }
+
+    public void clearAll() {
+        for(int i = 0; i < this.elements.length; i++) {
+            if(this.elements[i] != null) this.elements[i] = null;
+        }
+    }
 }
