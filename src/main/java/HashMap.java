@@ -15,9 +15,7 @@ public class HashMap<K, V> {
     }
 
     public void add(K key, V value) {
-        int position;
-        if (key == null) position = 0;
-        else position = getHash(key);
+        int position = getPosition(key);
 
         LinkedList<KeyValue> list = this.elements[position];
         KeyValue<K, V> keyValue = new KeyValue<>(key, value);
@@ -37,10 +35,8 @@ public class HashMap<K, V> {
     }
 
     public V getValue(K key) {
-        int position;
+        int position = getPosition(key);
         Object value = null;
-        if (key == null) position = 0;
-        else position = getHash(key);
 
         LinkedList<KeyValue> list = this.elements[position];
 
@@ -56,9 +52,7 @@ public class HashMap<K, V> {
     }
 
     public void remove(K key) {
-        int position;
-        if (key == null) position = 0;
-        else position = getHash(key);
+        int position = getPosition(key);
 
         LinkedList<KeyValue> list = this.elements[position];
 
@@ -80,5 +74,10 @@ public class HashMap<K, V> {
         for(int i = 0; i < this.elements.length; i++) {
             if(this.elements[i] != null) this.elements[i] = null;
         }
+    }
+
+    private int getPosition(K key) {
+        if (key == null) return 0;
+        else return getHash(key);
     }
 }
