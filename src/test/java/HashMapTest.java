@@ -38,4 +38,14 @@ class HashMapTest {
         assertThrows(NullPointerException.class, () -> hashMap.getValue("first"));
         assertThrows(NullPointerException.class, () -> hashMap.getValue("second"));
     }
+
+    @Test
+    void testAddNullKey() {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        hashMap.add(null, 0);
+
+        int valueFromNull = hashMap.getValue(null);
+
+        assertEquals(0, valueFromNull);
+    }
 }
