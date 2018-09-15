@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class HashMapTest {
@@ -68,5 +67,17 @@ class HashMapTest {
         hashMap.remove(null);
 
         assertThrows(NullPointerException.class, () -> hashMap.getValue(null));
+    }
+
+    @Test
+    void testAddTheSameKey() {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        hashMap.add("test", 1);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            hashMap.add("test", 5);
+        });
+
+        assertEquals("This key already exists in HashMap", exception.getMessage());
     }
 }
